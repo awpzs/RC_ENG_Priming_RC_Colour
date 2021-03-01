@@ -1,8 +1,8 @@
 PennController.ResetPrefix(null) // Shorten command names (keep this line here)
 var showProgressBar = false;
 //PennController.DebugOff()
-PennController.AddHost("https://raw.githubusercontent.com/awpzs/RC_ENG_Priming_RC_Colour/master/audio/")
-PennController.AddHost("https://raw.githubusercontent.com/awpzs/RC_ENG_Priming_RC_Colour/master/images/")
+//PennController.AddHost("https://raw.githubusercontent.com/awpzs/RC_ENG_Priming_RC_Colour/master/audio/")
+//PennController.AddHost("https://raw.githubusercontent.com/awpzs/RC_ENG_Priming_RC_Colour/master/images/")
 PennController.AddHost("https://raw.githubusercontent.com/awpzs/RC_ENG_Priming_RC_Colour/master/images/images_exp_cleaned/")
 PennController.AddHost("https://raw.githubusercontent.com/awpzs/RC_ENG_Priming_RC_Colour/master/images/images_filler_recycle/")
 PennController.AddHost("https://raw.githubusercontent.com/awpzs/RC_ENG_Priming_RC_Colour/master/images/images_new_filler/")
