@@ -1,12 +1,12 @@
 PennController.ResetPrefix(null) // Shorten command names (keep this line here)
 var showProgressBar = false;
 //PennController.DebugOff()
-//PennController.AddHost("https://raw.githubusercontent.com/awpzs/RC_ENG_Priming_RC_Colour/master/audio/")
+PennController.AddHost("https://raw.githubusercontent.com/awpzs/RC_ENG_Priming_RC_Colour/master/audio/")
 PennController.AddHost("https://raw.githubusercontent.com/awpzs/RC_ENG_Priming_RC_Colour/master/images/")
 
-Sequence( "prac", "exp_block1" ) //for checking pics
+//Sequence( "prac", "exp_block1" ) //for checking pics
 //Sequence( "initRecorder", "exp_start", "exp_block1", "rest", "exp_block2", "final" ) //for checking lists only
-//Sequence( "initRecorder", "mic_check_1", "mic_check_2", "setcounter", "information", "survey", "identification", "recording_information", "instruction", "prac", "exp_start", "exp_block1", "rest", "exp_block2", "send", "final" )
+Sequence( "initRecorder", "mic_check_1", "mic_check_2", "setcounter", "information", "survey", "identification", "recording_information", "instruction", "prac", "exp_start", "exp_block1", "rest", "exp_block2", "send", "final" )
 
 InitiateRecorder("https://localhost/pcibex/index.php", "<p>Thank you very much for your interest in participating in this study.</p><p>This experiment involves audio recording, so let us first test if your microphone is working.</p><p><strong>In the following microphone test, you’ll be asked to name aloud two images, while your responses are audio recorded.</strong></p><p>Please grant expt.pcibex.net access to your microphone, by clicking on the link below.</p><p><strong>The recording will start immediately, and you’ll be prompted to name an image aloud.</strong></p><p><strong>You will be able to listen to your response by clicking on “Playback”.</strong></p>").label("initRecorder")
 //InitiateRecorder("https://langprolab.stir.ac.uk/pcibex/index.php", "<p>Thank you very much for your interest in participating in this study.</p><p>This experiment involves audio recording, so let us first test if your microphone is working.</p><p><strong>In the following microphone test, you’ll be asked to name aloud two images, while your responses are audio recorded.</strong></p><p>Please grant expt.pcibex.net access to your microphone, by clicking on the link below.</p><p><strong>The recording will start immediately, and you’ll be prompted to name an image aloud.</strong></p><p><strong>You will be able to listen to your response by clicking on “Playback”.</strong></p>").label("initRecorder")
@@ -248,31 +248,31 @@ Template(
                  .failure(newText("Listen carefully. Click on the object described.")
                     .settings.center()
                     .print())            
-            //,
-            //newTimer("delay", 2000)
-            //    .start()
-            //    .wait()
-            //,
-            //newAudio("description", variable.audio)
-            //    .play()
+            ,
+            newTimer("delay", 2000)
+                .start()
+                .wait()
+            ,
+            newAudio("description", variable.audio)
+                .play()
             ,
             newSelector("imgSelect")
                 .add( getImage("1") , getImage("2"), getImage("3"), getImage("4"),
                       getImage("5") , getImage("6"), getImage("7"), getImage("8") )
                 .log()
                 .wait()                        
-            //,
-            //getAudio("description")
-            //    .wait("first")
+            ,
+            getAudio("description")
+                .wait("first")
             ,
             clear()
             ,
             newText("production", "<p>Now it’s your turn - please describe the object that’s in the box, so that your listener can identify the object.</p><p>When you finished describing the object, click on “Proceed” to proceed.</p>")
             ,
             newVar("box", variable.boxPos)
-            //,
-            //newMediaRecorder("recorder", "audio")
-            //    .record()
+            ,
+            newMediaRecorder("recorder", "audio")
+                .record()
             ,
             getVar("box").test.is("1")
                 .success(getImage("1").css("border", "solid 1px black"))
@@ -326,16 +326,16 @@ Template(
                 .add(getButton("proc"))
                 .log()
                 .wait()
-            //,
-            //newTimer("wait", 1500)
-            //    .start()
-            //    .wait()
-            //,
-            //getMediaRecorder("recorder")
-            //    .stop()
-            //,
-            //getMediaRecorder("recorder").test.recorded()
-            //    .failure(newText("Sorry, there seems to be something wrong with your microphone. Please stop the experiment, and contact the researcher.").settings.center().print())
+            ,
+            newTimer("wait", 1500)
+                .start()
+                .wait()
+            ,
+            getMediaRecorder("recorder")
+                .stop()
+            ,
+            getMediaRecorder("recorder").test.recorded()
+                .failure(newText("Sorry, there seems to be something wrong with your microphone. Please stop the experiment, and contact the researcher.").settings.center().print())
             ,
             clear()
             ,
@@ -389,7 +389,7 @@ Template(
 
 Template(
     GetTable("fulldesign.csv")
-            .setGroupColumn("list")//.filter(variable => variable.order < 44)
+            .setGroupColumn("list").filter(variable => variable.order < 46)
             //.filter( variable => variable.list == 1 ) 
             , variable =>
     		newTrial( "exp_block1" ,
@@ -430,29 +430,29 @@ Template(
                 	.add(350, 175, getImage("7") )
                 	.add(525, 175, getImage("8") )
                 	.print()
-            	//,
-            	//newTimer("delay", 2000)
-                //	.start()
-                //	.wait()
-            	//,
-            	//newAudio("description", variable.audio)
-                //	.play()
+            	,
+            	newTimer("delay", 2000)
+                	.start()
+                	.wait()
+            	,
+            	newAudio("description", variable.audio)
+                	.play()
             	,
             	newSelector("imgSelect")
                 	.add( getImage("1") , getImage("2"), getImage("3"), getImage("4"),
                 	      getImage("5") , getImage("6"), getImage("7"), getImage("8") )
                 	.log()
                 	.wait()
-            	//,
-            	//getAudio("description")
-                //	.wait("first")
+            	,
+            	getAudio("description")
+                	.wait("first")
             	,
             	clear()
             	,
             	newVar("box", variable.boxPos)
-            	//,
-            	//newMediaRecorder("recorder", "audio")
-                //	.record()
+            	,
+            	newMediaRecorder("recorder", "audio")
+                	.record()
             	,
             	getVar("box").test.is("1")
                 	.success(getImage("1").css("border", "solid 1px black"))
@@ -505,29 +505,30 @@ Template(
                 	.add(getButton("proc"))
                 	.log()
                 	.wait()
-            	//,
-            	//newTimer("wait", 1500)
-                //	.start()
-                //	.wait()
-            	//,
-            	//getMediaRecorder("recorder")
-                //	.stop()
-            	//,
-            	//getMediaRecorder("recorder").test.recorded()
-                //	.failure(newText("Sorry, there seems to be something wrong with your microphone. Please stop the experiment, and contact the researcher.").settings.center().print())
+            	,
+            	newTimer("wait", 1500)
+                	.start()
+                	.wait()
+            	,
+            	getMediaRecorder("recorder")
+                	.stop()
+            	,
+            	getMediaRecorder("recorder").test.recorded()
+                	.failure(newText("Sorry, there seems to be something wrong with your microphone. Please stop the experiment, and contact the researcher.").settings.center().print())
     )
     .log("ID", GetURLParameter("id")    )
     .log("List", variable.list)
     .log("Order", variable.order)
     .log("Item", variable.item)
     .log("Condition", variable.condition)
+    .log("Concept", variable.concept)
     .log("Prime", variable.prime)
     .log("Repetition", variable.colour_repetition)
     .log("PrimeDescription", variable.prime_description)
     .log("TargetDescription", variable.target_description)
     .log("TargetObject", variable.target_object)
-    .log("RepeatedPrime", variable.repeated_prime_DiffN_SameC_DiffP)
-    .log("NonRepeatedPrime", variable.non_repeated_prime_DiffN_DiffC_DiffP
+    .log("RepeatedPrime", variable.distractor6_repeated_prime_DiffN_SameC_DiffP)
+    .log("NonRepeatedPrime", variable.distractor7_non_repeated_prime_DiffN_DiffC_DiffP
     )
     .log("ExpTrials", variable.expTrials)
     .log("PrimePosition", variable.targetImg)
@@ -547,7 +548,7 @@ newTrial( "rest" ,
 
 Template(
     GetTable("fulldesign.csv")
-            .setGroupColumn("list").filter(variable => variable.order > 43)
+            .setGroupColumn("list").filter(variable => variable.order > 45)
             //.filter( variable => variable.list == 1 ) 
             , variable =>
     		newTrial( "exp_block2" ,
@@ -679,13 +680,14 @@ Template(
     .log("Order", variable.order)
     .log("Item", variable.item)
     .log("Condition", variable.condition)
+    .log("Concept", variable.concept)
     .log("Prime", variable.prime)
     .log("Repetition", variable.colour_repetition)
     .log("PrimeDescription", variable.prime_description)
     .log("TargetDescription", variable.target_description)
     .log("TargetObject", variable.target_object)
-    .log("RepeatedPrime", variable.repeated_prime_DiffN_SameC_DiffP)
-    .log("NonRepeatedPrime", variable.non_repeated_prime_DiffN_DiffC_DiffP
+    .log("RepeatedPrime", variable.distractor6_repeated_prime_DiffN_SameC_DiffP)
+    .log("NonRepeatedPrime", variable.distractor7_non_repeated_prime_DiffN_DiffC_DiffP
     )
     .log("ExpTrials", variable.expTrials)
     .log("PrimePosition", variable.targetImg)
