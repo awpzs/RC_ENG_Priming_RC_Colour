@@ -451,7 +451,7 @@ Template(
             	,
             	newVar("box", variable.boxPos)
             	,
-            	newMediaRecorder(variable.expTrials+'_'+variable.recordingName+'_'+GetURLParameter("id"), "audio")
+            	newMediaRecorder(variable.recordingName+'_'+GetURLParameter("id"), "audio")
                 	.record()
             	,
             	getVar("box").test.is("1")
@@ -510,10 +510,10 @@ Template(
                 	.start()
                 	.wait()
             	,
-            	getMediaRecorder(variable.expTrials+'_'+variable.recordingName+'_'+GetURLParameter("id"))
+            	getMediaRecorder(variable.recordingName+'_'+GetURLParameter("id"))
                 	.stop()
             	,
-            	getMediaRecorder(variable.expTrials+'_'+variable.recordingName+'_'+GetURLParameter("id")).test.recorded()
+            	getMediaRecorder(variable.recordingName+'_'+GetURLParameter("id")).test.recorded()
                 	.failure(newText("Sorry, there seems to be something wrong with your microphone. Please stop the experiment, and contact the researcher.").settings.center().print())
     )
     .log("ID", GetURLParameter("id")    )
@@ -610,7 +610,7 @@ Template(
             	,
             	newVar("box", variable.boxPos)
             	,
-            	newMediaRecorder(variable.expTrials+'_'+variable.recordingName+'_'+GetURLParameter("id"), "audio")
+            	newMediaRecorder(variable.recordingName+'_'+GetURLParameter("id"), "audio")
                 	.record()
             	,
             	getVar("box").test.is("1")
@@ -669,10 +669,10 @@ Template(
                 	.start()
                 	.wait()
             	,
-            	getMediaRecorder(variable.expTrials+'_'+variable.recordingName+'_'+GetURLParameter("id"))
+            	getMediaRecorder(variable.recordingName+'_'+GetURLParameter("id"))
                 	.stop()
             	,
-            	getMediaRecorder(variable.expTrials+'_'+variable.recordingName+'_'+GetURLParameter("id")).test.recorded()
+            	getMediaRecorder(variable.recordingName+'_'+GetURLParameter("id")).test.recorded()
                 	.failure(newText("Sorry, there seems to be something wrong with your microphone. Please stop the experiment, and contact the researcher.").settings.center().print())
     )
     .log("ID", GetURLParameter("id")    )
